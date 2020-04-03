@@ -13,6 +13,7 @@ defined( 'WPINC' ) || die();
 require_once 'favorite-schedule-shortcode.php';
 
 add_action( 'init', __NAMESPACE__ . '\register_sponsor_post_meta' );
+add_action( 'init', __NAMESPACE__ . '\register_speaker_post_meta' );
 add_action( 'init', __NAMESPACE__ . '\register_session_post_meta' );
 add_action( 'is_protected_meta', __NAMESPACE__ . '\unprotect_wcpt_meta', 10, 2 );
 
@@ -26,6 +27,49 @@ function register_sponsor_post_meta() {
 		'wcb_sponsor',
 		'_wcpt_sponsor_website',
 		array(
+			'show_in_rest' => true,
+			'single'       => true,
+		)
+	);
+}
+
+/**
+ * Registers post meta to the Speaker post type.
+ *
+ * @return void
+ */
+function register_speaker_post_meta() {
+	register_post_meta(
+		'wcb_speaker',
+		'_wcpt_user_id',
+		array(
+			'type'         => 'integer',
+			// This is not set directly, but is set as a result of `_wcpt_user_name`.
+			'show_in_rest' => false,
+			'single'       => true,
+		)
+	);
+	register_post_meta(
+		'wcb_speaker',
+		'_wcpt_user_name',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => function( $value ) {
+				$wporg_user = wcorg_get_user_by_canonical_names( $value );
+				if ( ! $wporg_user ) {
+					return '';
+				}
+				return $wporg_user->user_login;
+			},
+		)
+	);
+	register_post_meta(
+		'wcb_speaker',
+		'_wcb_speaker_email',
+		array(
+			'type'         => 'string',
 			'show_in_rest' => true,
 			'single'       => true,
 		)
