@@ -105,6 +105,7 @@ $wordcamp_title = wcpt_get_wordcamp_title();
 				?>
 
 				<div class="wc-single-past">
+<!--					todo impacted -->
 
 					<h3>
 						<?php echo esc_html( $wordcamp_title ); ?>

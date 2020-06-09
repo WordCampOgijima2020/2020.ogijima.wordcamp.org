@@ -397,6 +397,7 @@ function shortcode_sessions( $attr, $content ) {
 						$speaker_permalink = $GLOBALS['wcpt_plugin']->get_speaker_wporg_permalink( $speaker->ID );
 					} elseif ( 'permalink' == $attr['speaker_link'] ) {
 						// year.city.wordcamp.org/speakers/slug.
+						// todo this or nearby impacted?
 						$speaker_permalink = get_permalink( $speaker->ID );
 					}
 

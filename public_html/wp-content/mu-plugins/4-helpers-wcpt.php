@@ -160,6 +160,7 @@ function wcorg_get_url_part( $url, $part ) {
 	$result    = false;
 
 	// Make sure it matches the typical year.city.wordcamp.org structure.
+		// todo impacted
 	if ( 4 !== count( $url_parts ) ) {
 		return $result;
 	}

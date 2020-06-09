@@ -46,6 +46,7 @@ function wcorg_force_ssl() {
 	// Our SSL certificate covers only *.wordcamp.org but year.city.wordcamp.org rediercts should still work.
 	// if ( ! preg_match( '#^(?:[^.]+\.)?wordcamp\.org$#i', $_SERVER['HTTP_HOST'] ) )
 	//	return;
+	// todo this is affected?
 
 	header( 'Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], true, 301 );
 	exit;

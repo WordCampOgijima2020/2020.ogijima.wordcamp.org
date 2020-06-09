@@ -491,6 +491,7 @@ class WordCamp_Post_Types_Plugin {
 						$speaker_permalink = $this->get_speaker_wporg_permalink( $speaker->ID );
 					} elseif ( 'permalink' === $attr['speaker_link'] ) {
 						// year.city.wordcamp.org/speakers/slug.
+						// todo this or nearby impacted?
 						$speaker_permalink = get_permalink( $speaker->ID );
 					}
 
