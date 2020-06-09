@@ -38,7 +38,9 @@ class WordCamp_New_Site {
 				name="<?php echo esc_attr( $object_name ); ?>"
 				id="<?php echo esc_attr( $object_name ); ?>"
 				value="<?php echo esc_attr( get_post_meta( $post_id, $key, true ) ); ?>"
+				placeholder="https://city.wordcamp.org/<?php echo esc_attr( wp_date( 'Y' ) ); ?>/"
 			/>
+		<!--				 todo need to make sure that has a trailing slash when created? -->
 
 			<?php if ( current_user_can( 'manage_sites' ) ) : ?>
 				<?php $url = parse_url( trailingslashit( get_post_meta( $post_id, $key, true ) ) ); ?>
@@ -64,8 +66,6 @@ class WordCamp_New_Site {
 						<input id="<?php echo esc_attr( $checkbox_id ); ?>" type="checkbox" name="<?php echo esc_attr( $checkbox_id ); ?>" />
 						Create site in network
 					</label>
-
-					<span class="description">(e.g., https://<?php echo esc_attr( wp_date( 'Y' ) ); ?>.city.wordcamp.org)</span>
 				<?php endif; // Domain exists. ?>
 			<?php endif; // User can manage sites. ?>
 		<?php endif;
