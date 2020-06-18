@@ -10,6 +10,12 @@ Follow these steps to setup a local WordCamp.org environment using [Docker](http
     cd wordcamp.test
     ```
 
+todo
+local ssl is now easier, yay!
+	just create a *.wordcamp.org wildcard w/ mkcert, then install it
+	update docker instructions
+
+
 1. Generate and trust the SSL certificates, so you get a green bar and can adequately test service workers.
 	```bash
 	cd .docker
