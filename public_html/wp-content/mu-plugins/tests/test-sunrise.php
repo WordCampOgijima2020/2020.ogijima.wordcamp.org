@@ -184,6 +184,8 @@ class Test_Sunrise extends Database_TestCase {
 	 */
 	public function data_guess_requested_domain_path() {
 		return array(
+			// test invalid inputs to make sure it's not jsut always
+
 			'root site' => array( array(
 				'domain' => 'wordcamp.test',
 

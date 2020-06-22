@@ -128,6 +128,11 @@ function unsubdomactories_redirects( $domain, $request_uri ) {
 		'croatia', 'cantabria', 'greenville', 'jacksonville', 'nuremberg', 'berlin', 'memphis', 'jakarta',
 		'pittsburgh', 'nola', 'neo', 'antwerp', 'helsinki', 'vernon', 'frankfurt', 'torino', 'bilbao', 'peoria',
 		'sunshinecoast', 'gdynia', 'lehighvalley', 'lahore', 'bratislava', 'rochester', 'cincinnati', 'okc',
+
+
+		// todo
+		'seattle',
+//		'misc',
 	);
 
 	$tld = 'local' === WORDCAMP_ENVIRONMENT ? 'test' : 'org';
@@ -269,6 +274,8 @@ function get_canonical_year_url( $domain, $path ) {
 	// Return early if not a third- or fourth-level domain, e.g., city.wordcamp.org, year.city.wordcamp.org.
 	$domain_parts = explode( '.', $domain );
 
+	// also don't return if already on a city/year site, but wouldn't that be covered by above?
+
 	if ( 2 >= count( $domain_parts ) ) {
 		return false;
 	}
@@ -318,6 +325,8 @@ function get_domain_redirects() {
 	$central = "central.wordcamp.$tld";
 
 	return array(
+		// todo update these as their cities move over
+
 		// Central redirects.
 		"bg.wordcamp.$tld"                        => $central,
 		"denmark.wordcamp.$tld"                   => $central,
