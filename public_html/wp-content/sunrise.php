@@ -173,6 +173,12 @@ function unsubdomactories_redirects( $domain, $request_uri ) {
 	return $redirect_to;
 }
 
+// todo anywhere that code uses $REQUEST_URI, it might assume that there isn't a site path at the begining,
+// so ugh need to search for instances of that, similar to jsonapiv1
+
+// todo dion has some automated testing stuff from wporg-seo plugin?
+	// might be useful
+
 /**
  * Redirect `/year-foo/%year%/%monthnum%/%day%/%postname%/` permalinks to `/%postname%/`.
  *
