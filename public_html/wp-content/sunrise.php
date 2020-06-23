@@ -78,6 +78,17 @@ function get_city_slash_year_url( $domain, $request_uri ) {
 
 	$redirect_cities = array(
 		'testing',
+
+		// todo don't commit until actually ready to test. but need it here now for the unit tests
+
+		//'seattle',
+
+		// todo add new domains added since 2014, prob just start fresh w/ list from bin script
+			// maybe do a blocklist instead of a safelist? or maybe not b/c new sites will be new url by default, so only old sites need redirects
+			// include buddycamp
+
+		// temp local
+		'misc',
 	);
 
 	if ( ! preg_match( PATTERN_YEAR_DOT_CITY_DOMAIN_PATH, $domain . $request_uri, $matches ) ) {
