@@ -76,20 +76,25 @@ function get_top_level_domain() {
 function get_city_slash_year_url( $domain, $request_uri ) {
 	$tld = get_top_level_domain();
 
+	// todo move cities from unsubdomactories_redirects to here as they're migrated on production
 	$redirect_cities = array(
 		'testing',
-
-		// todo don't commit until actually ready to test. but need it here now for the unit tests
-
-		//'seattle',
-
-		// todo add new domains added since 2014, prob just start fresh w/ list from bin script
-			// maybe do a blocklist instead of a safelist? or maybe not b/c new sites will be new url by default, so only old sites need redirects
-			// include buddycamp
-
-		// temp local
-		'misc',
 	);
+
+
+	// todo tmp for local testing
+	$redirect_cities = array_merge( $redirect_cities, array(
+		'atlanta',
+		'sf',
+		'columbus',
+		'toronto',
+		'brighton',
+		'rhodeisland',
+		'seattle',
+		'content',
+		'misc',
+	) );
+
 
 	if ( ! preg_match( PATTERN_YEAR_DOT_CITY_DOMAIN_PATH, $domain . $request_uri, $matches ) ) {
 		return false;
@@ -139,12 +144,22 @@ function unsubdomactories_redirects( $domain, $request_uri ) {
 		'croatia', 'cantabria', 'greenville', 'jacksonville', 'nuremberg', 'berlin', 'memphis', 'jakarta',
 		'pittsburgh', 'nola', 'neo', 'antwerp', 'helsinki', 'vernon', 'frankfurt', 'torino', 'bilbao', 'peoria',
 		'sunshinecoast', 'gdynia', 'lehighvalley', 'lahore', 'bratislava', 'rochester', 'cincinnati', 'okc',
-
-
-		// todo
-		'seattle',
-//		'misc',
 	);
+
+
+	// don't need `misc` here b/c not up there to begin with.
+	$_tmp_local_undo = array(
+		'atlanta',
+		'brighton',
+		'columbus',
+		'rhodeisland',
+		'seattle',
+		'sf',
+		'toronto',
+	);
+
+	$redirect_cities = array_diff( $redirect_cities, $_tmp_local_undo );
+
 
 	$tld = 'local' === WORDCAMP_ENVIRONMENT ? 'test' : 'org';
 
