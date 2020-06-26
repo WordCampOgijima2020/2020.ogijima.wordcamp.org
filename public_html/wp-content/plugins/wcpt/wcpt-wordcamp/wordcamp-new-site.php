@@ -31,6 +31,13 @@ class WordCamp_New_Site {
 	public function render_site_url_field( $key, $field_type, $object_name ) {
 		global $post_id;
 
+		// todo don't store this in meta b/c storing site ID? just populate this dynamically based on the stored site it
+			// otherwise have to migrate the URL of the wcpt post when migrating sites, and that'll take more effort
+			// this is probably better anyway - if site gets renamed b/c of typo or whatever, don't have to change the wcpt post
+			// but what if someone wants to remove it or something? are there use cases that wouldn't work?
+
+		// or maybe use site id if it exists, but fallback to URL if it doesn't. that would support old sites, plus have benefit of documenting why there are old URL values in the db if we're using site id for new sites
+
 		if ( 'URL' == $key && 'wc-url' == $field_type ) : ?>
 			<input
 				type="text"
